@@ -1,8 +1,12 @@
-package com.ezgroceries.shoppinglist.dao;
+package com.ezgroceries.shoppinglist.manager;
+
+import com.ezgroceries.shoppinglist.dao.ShoppingList;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class ShoppingListManager {
     private List<ShoppingList> allShoppingLists;
 
@@ -24,5 +28,9 @@ public class ShoppingListManager {
             }
         }
         return null;
+    }
+
+    public List<ShoppingList> getAllShoppingLists() {
+        return allShoppingLists;
     }
 }

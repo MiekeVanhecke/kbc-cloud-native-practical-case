@@ -1,9 +1,14 @@
-package com.ezgroceries.shoppinglist.dao;
+package com.ezgroceries.shoppinglist.manager;
+
+import com.ezgroceries.shoppinglist.dao.Cocktail;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 
+@Component
 public class CocktailManager {
 
     private List<Cocktail> allCocktails;
@@ -30,4 +35,18 @@ public class CocktailManager {
         return allCocktails;
     }
 
+    public Cocktail getCocktail(String cocktailId) {
+        for (Cocktail aCocktail : allCocktails) {
+            if (aCocktail.getCocktailId().equals(cocktailId)) return aCocktail;
+        }
+        return null;
+    }
+
+    public List<Cocktail> searchCocktail(String cocktailString) {
+        List<Cocktail> allCocktailsMatchSearch = new ArrayList<>();
+        for (Cocktail aCocktail : allCocktails) {
+            if (aCocktail.getName().toLowerCase().indexOf(cocktailString.toLowerCase())>-1) allCocktailsMatchSearch.add(aCocktail);
+        }
+        return allCocktailsMatchSearch;
+    }
 }

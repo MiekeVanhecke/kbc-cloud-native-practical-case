@@ -19,7 +19,7 @@ public class ShoppingList {
     }
 
     public void addIngredients (List<String> ingredients){
-        ingredients.addAll(ingredients);
+        this.ingredients.addAll(ingredients);
     }
     public String getShoppingListId() {
         return shoppingListId;
