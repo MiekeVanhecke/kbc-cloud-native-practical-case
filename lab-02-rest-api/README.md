@@ -1,3 +1,5 @@
+
+
 # Lab 02 - REST API
 In close collaboration with the Mobile teams, our ``ezGroceries`` team has designed a REST API that will cover all the functionalities of the initial minimum viable product.
 

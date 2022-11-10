@@ -4,6 +4,8 @@ import com.ezgroceries.shoppinglist.controller.contracts.CocktailRequest;
 import com.ezgroceries.shoppinglist.controller.contracts.ShoppingRequest;
 import com.ezgroceries.shoppinglist.dao.Cocktail;
 
+import com.ezgroceries.shoppinglist.dao.CocktailDBResponse;
+import com.ezgroceries.shoppinglist.manager.CocktailDBClient;
 import com.ezgroceries.shoppinglist.manager.CocktailManager;
 import com.ezgroceries.shoppinglist.dao.ShoppingList;
 import com.ezgroceries.shoppinglist.manager.ShoppingListManager;
@@ -24,6 +26,9 @@ public class ShoppingController {
     private CocktailManager cocktailManager;
     private  ShoppingListManager shoppingListManager;
 
+    @Autowired
+    private CocktailDBClient cocktailDBClient;
+
     private static final Logger log = LoggerFactory.getLogger(ShoppingController.class);
 
     @Autowired
@@ -34,9 +39,9 @@ public class ShoppingController {
 
     @GetMapping(path="/cocktails", produces = "application/json")
     public List<Cocktail> cocktails(@RequestParam(value = "search", required = false) String search) {
-        if (search != null && search.trim().length()> 0) {
-            return cocktailManager.searchCocktail(search);
-        }
+        CocktailDBResponse cocktailDBResponse = cocktailDBClient.searchCocktails(search);
+        cocktailManager.createCocktailList(cocktailDBResponse);
+
         return cocktailManager.getAllCocktails();
     }
 

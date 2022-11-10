@@ -1,6 +1,7 @@
 package com.ezgroceries.shoppinglist.manager;
 
 import com.ezgroceries.shoppinglist.dao.Cocktail;
+import com.ezgroceries.shoppinglist.dao.CocktailDBResponse;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -15,6 +16,7 @@ public class CocktailManager {
 
     public CocktailManager() {
         List<Cocktail> cocktails = new ArrayList<>();
+
         cocktails.add(new Cocktail("23b3d85a-3928-41c0-a533-6538a71e17c4",
                 "Margerita",
                 "Cocktail glass",
@@ -27,6 +29,7 @@ public class CocktailManager {
                 "Rub rim of cocktail glass with lime juice. Dip rim in coarse salt..",
                 "https://www.thecocktaildb.com/images/media/drink/qtvvyq1439905913.jpg",
                 Arrays.asList("Tequila", "Blue Curacao","Lime juice", "Salt")));
+
 
         this.allCocktails = cocktails;
     }
@@ -42,7 +45,23 @@ public class CocktailManager {
         return null;
     }
 
-    public List<Cocktail> searchCocktail(String cocktailString) {
+    public void createCocktailList(CocktailDBResponse cocktailDBResponse) {
+        List<CocktailDBResponse.DrinkResource> drinks = cocktailDBResponse.getDrinks();
+        for (CocktailDBResponse.DrinkResource aDrink : drinks) {
+            List<String> ingredients = new ArrayList<>();
+            if (aDrink.getStrIngredient1() != null && aDrink.getStrIngredient1().trim().length()>0) ingredients.add(aDrink.getStrIngredient1());
+            if (aDrink.getStrIngredient2() != null && aDrink.getStrIngredient2().trim().length()>0) ingredients.add(aDrink.getStrIngredient2());
+            if (aDrink.getStrIngredient3() != null && aDrink.getStrIngredient3().trim().length()>0) ingredients.add(aDrink.getStrIngredient3());
+            if (aDrink.getStrIngredient4() != null && aDrink.getStrIngredient4().trim().length()>0) ingredients.add(aDrink.getStrIngredient4());
+            if (aDrink.getStrIngredient5() != null && aDrink.getStrIngredient5().trim().length()>0) ingredients.add(aDrink.getStrIngredient5());
+            if (aDrink.getStrIngredient6() != null && aDrink.getStrIngredient6().trim().length()>0) ingredients.add(aDrink.getStrIngredient6());
+            if (aDrink.getStrIngredient7() != null && aDrink.getStrIngredient7().trim().length()>0) ingredients.add(aDrink.getStrIngredient7());
+            if (aDrink.getStrIngredient8() != null && aDrink.getStrIngredient8().trim().length()>0) ingredients.add(aDrink.getStrIngredient8());
+            Cocktail cocktail = new Cocktail(aDrink.getIdDrink(), aDrink.getStrDrink(), aDrink.getStrGlass(), aDrink.getStrInstructions(), aDrink.getStrDrinkThumb(), ingredients);
+            allCocktails.add(cocktail);
+        }
+    }
+    public List<Cocktail> searchCocktails(String cocktailString) {
         List<Cocktail> allCocktailsMatchSearch = new ArrayList<>();
         for (Cocktail aCocktail : allCocktails) {
             if (aCocktail.getName().toLowerCase().indexOf(cocktailString.toLowerCase())>-1) allCocktailsMatchSearch.add(aCocktail);
