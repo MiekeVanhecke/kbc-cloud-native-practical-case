@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-public class ShoppingList {
+public class ShoppingListResource {
 
 
     private String shoppingListId;
@@ -12,7 +12,7 @@ public class ShoppingList {
     private List<String> ingredients;
 
 
-    public ShoppingList(String name) {
+    public ShoppingListResource(String name) {
         this.shoppingListId = String.valueOf(UUID.randomUUID());
         this.name = name;
         this.ingredients = new ArrayList<>();

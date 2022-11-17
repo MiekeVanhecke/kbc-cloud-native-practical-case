@@ -3,7 +3,7 @@ package com.ezgroceries.shoppinglist.dao;
 
 import java.util.List;
 
-public class Cocktail {
+public class CocktailResource {
     private String cocktailId;
     private String name;
     private String glass;
@@ -11,7 +11,7 @@ public class Cocktail {
     private String image;
     private List<String> ingredients;
 
-    public Cocktail(String cocktailId, String name, String glass, String instructions, String image, List<String> ingredients) {
+    public CocktailResource(String cocktailId, String name, String glass, String instructions, String image, List<String> ingredients) {
         this.cocktailId = cocktailId;
         this.name = name;
         this.glass = glass;

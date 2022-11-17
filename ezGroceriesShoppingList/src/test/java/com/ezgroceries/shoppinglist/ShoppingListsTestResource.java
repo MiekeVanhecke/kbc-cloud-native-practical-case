@@ -1,10 +1,8 @@
 package com.ezgroceries.shoppinglist;
 
-import com.ezgroceries.shoppinglist.controller.ShoppingController;
-import com.ezgroceries.shoppinglist.dao.ShoppingList;
+import com.ezgroceries.shoppinglist.dao.ShoppingListResource;
 import com.ezgroceries.shoppinglist.manager.CocktailManager;
 import com.ezgroceries.shoppinglist.manager.ShoppingListManager;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,7 +22,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK)
 @AutoConfigureMockMvc
-public class ShoppingListsTest {
+public class ShoppingListsTestResource {
     private final Logger logger = LoggerFactory.getLogger(getClass());
     private static final String BASE_URL = "http://localhost:8080";
 
@@ -63,7 +61,7 @@ public class ShoppingListsTest {
     @Test
     public void addShoppingList() throws Exception {
 
-        ShoppingList aTestShopping = new ShoppingList("Test shopping");
+        ShoppingListResource aTestShopping = new ShoppingListResource("Test shopping");
         aTestShopping.addIngredients(Arrays.asList("cava","kirr"));
         aTestShopping.setShoppingListId("shoppinglistID");
 

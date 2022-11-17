@@ -1,6 +1,6 @@
 package com.ezgroceries.shoppinglist.manager;
 
-import com.ezgroceries.shoppinglist.dao.ShoppingList;
+import com.ezgroceries.shoppinglist.dao.ShoppingListResource;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -8,29 +8,29 @@ import java.util.List;
 
 @Component
 public class ShoppingListManager {
-    private List<ShoppingList> allShoppingLists;
+    private List<ShoppingListResource> allShoppingListResources;
 
 
     public ShoppingListManager() {
-        this.allShoppingLists = new ArrayList<>();
+        this.allShoppingListResources = new ArrayList<>();
     }
 
     public String createShoppingList(String name) {
-        ShoppingList aShoppingList = new ShoppingList(name);
-        allShoppingLists.add(aShoppingList);
-        return aShoppingList.getShoppingListId();
+        ShoppingListResource aShoppingListResource = new ShoppingListResource(name);
+        allShoppingListResources.add(aShoppingListResource);
+        return aShoppingListResource.getShoppingListId();
     }
 
-    public ShoppingList getShoppingList(String shoppingListId) {
-        for (ShoppingList aShoppingList:allShoppingLists) {
-            if (aShoppingList.getShoppingListId().equals(shoppingListId)) {
-                return aShoppingList;
+    public ShoppingListResource getShoppingList(String shoppingListId) {
+        for (ShoppingListResource aShoppingListResource : allShoppingListResources) {
+            if (aShoppingListResource.getShoppingListId().equals(shoppingListId)) {
+                return aShoppingListResource;
             }
         }
         return null;
     }
 
-    public List<ShoppingList> getAllShoppingLists() {
-        return allShoppingLists;
+    public List<ShoppingListResource> getAllShoppingLists() {
+        return allShoppingListResources;
     }
 }
