@@ -1,4 +1,4 @@
-# Lab 04 - Persistence Capability
+w@# Lab 04 - Persistence Capability
 For implementing our Shopping List functionality we need some kind of persistence. In this lab we're first going to add
 the technical capability of talking to a database from our Spring Boot app.
 
