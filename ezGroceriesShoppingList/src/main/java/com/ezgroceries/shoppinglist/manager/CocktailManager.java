@@ -48,15 +48,7 @@ public class CocktailManager {
     public void createCocktailList(CocktailDBResponse cocktailDBResponse) {
         List<CocktailDBResponse.DrinkResource> drinks = cocktailDBResponse.getDrinks();
         for (CocktailDBResponse.DrinkResource aDrink : drinks) {
-            List<String> ingredients = new ArrayList<>();
-            if (aDrink.getStrIngredient1() != null && aDrink.getStrIngredient1().trim().length()>0) ingredients.add(aDrink.getStrIngredient1());
-            if (aDrink.getStrIngredient2() != null && aDrink.getStrIngredient2().trim().length()>0) ingredients.add(aDrink.getStrIngredient2());
-            if (aDrink.getStrIngredient3() != null && aDrink.getStrIngredient3().trim().length()>0) ingredients.add(aDrink.getStrIngredient3());
-            if (aDrink.getStrIngredient4() != null && aDrink.getStrIngredient4().trim().length()>0) ingredients.add(aDrink.getStrIngredient4());
-            if (aDrink.getStrIngredient5() != null && aDrink.getStrIngredient5().trim().length()>0) ingredients.add(aDrink.getStrIngredient5());
-            if (aDrink.getStrIngredient6() != null && aDrink.getStrIngredient6().trim().length()>0) ingredients.add(aDrink.getStrIngredient6());
-            if (aDrink.getStrIngredient7() != null && aDrink.getStrIngredient7().trim().length()>0) ingredients.add(aDrink.getStrIngredient7());
-            if (aDrink.getStrIngredient8() != null && aDrink.getStrIngredient8().trim().length()>0) ingredients.add(aDrink.getStrIngredient8());
+            List<String> ingredients = aDrink.getAllIngredients();
             Cocktail cocktail = new Cocktail(aDrink.getIdDrink(), aDrink.getStrDrink(), aDrink.getStrGlass(), aDrink.getStrInstructions(), aDrink.getStrDrinkThumb(), ingredients);
             allCocktails.add(cocktail);
         }

@@ -1,5 +1,8 @@
 package com.ezgroceries.shoppinglist.dao;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.List;
 
 public class CocktailDBResponse {
@@ -195,6 +198,24 @@ public class CocktailDBResponse {
             this.strIngredient15 = strIngredient15;
         }
 
+        public List<String> getAllIngredients() {
+            List<String> ingredients = new ArrayList<>();
+            try {
+                String ingredient = "";
+                for (int i=1; i<16; i++){
+                    Method method = this.getClass().getDeclaredMethod("getStrIngredient" + i);
+                    ingredient = (String) method.invoke(this);
+                    if (ingredient != null && ingredient.trim().length()>0) ingredients.add(ingredient);
+                }
+                return ingredients;
+            } catch (IllegalAccessException e) {
+                throw new RuntimeException(e);
+            } catch (InvocationTargetException e) {
+                throw new RuntimeException(e);
+            } catch (NoSuchMethodException e) {
+                throw new RuntimeException(e);
+            }
+        }
     }
 
 }

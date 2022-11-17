@@ -42,7 +42,7 @@ public class ShoppingListsTest {
         int expectedNumberOfCocktails = 0;
 
         this.mockMvc //
-                .perform(get( "/cocktails")
+                .perform(get( "/cocktails??search=russian")
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk()) //
                 .andExpect(content().contentType("application/json"))
