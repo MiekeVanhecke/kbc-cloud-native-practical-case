@@ -1,4 +1,4 @@
-package com.ezgroceries.shoppinglist.manager;
+package com.ezgroceries.shoppinglist.dao.repositories;
 
 import com.ezgroceries.shoppinglist.dao.CocktailDBResponse;
 import org.springframework.cloud.openfeign.FeignClient;

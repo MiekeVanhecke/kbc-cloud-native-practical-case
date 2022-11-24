@@ -5,10 +5,8 @@ import com.ezgroceries.shoppinglist.controller.contracts.ShoppingRequest;
 import com.ezgroceries.shoppinglist.dao.CocktailResource;
 
 import com.ezgroceries.shoppinglist.dao.CocktailDBResponse;
-import com.ezgroceries.shoppinglist.manager.CocktailDBClient;
-import com.ezgroceries.shoppinglist.manager.CocktailManager;
+import com.ezgroceries.shoppinglist.dao.repositories.CocktailDBClient;
 import com.ezgroceries.shoppinglist.dao.ShoppingListResource;
-import com.ezgroceries.shoppinglist.manager.ShoppingListManager;
 import com.ezgroceries.shoppinglist.services.CocktailService;
 import com.ezgroceries.shoppinglist.services.ShoppingListService;
 import org.slf4j.Logger;
