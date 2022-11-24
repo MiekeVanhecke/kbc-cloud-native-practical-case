@@ -17,6 +17,9 @@ public class CocktailEntity {
     @Convert(converter = StringListConverter.class)
     private List<String> ingredients= new ArrayList<>();
 
+    @OneToMany(mappedBy = "cocktail")
+    Set<CocktailShoppingListEntity> cocktailShoppingListEntities;
+
     public CocktailEntity() {
     }
 
@@ -58,5 +61,11 @@ public class CocktailEntity {
         this.ingredients = ingredients;
     }
 
+    public Set<CocktailShoppingListEntity> getCocktailShoppingListEntities() {
+        return cocktailShoppingListEntities;
+    }
 
+    public void setCocktailShoppingListEntities(Set<CocktailShoppingListEntity> cocktailShoppingListEntities) {
+        this.cocktailShoppingListEntities = cocktailShoppingListEntities;
+    }
 }
