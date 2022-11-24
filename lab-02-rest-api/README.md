@@ -3,7 +3,7 @@
 # Lab 02 - REST API
 In close collaboration with the Mobile teams, our ``ezGroceries`` team has designed a REST API that will cover all the functionalities of the initial minimum viable product.
 
-To make sure the Mobile app can start their implementation asap we have decided to implement these APIs using dummy values before we integrate with the 3rd party cocktail and meal APIs.
+To make sure the Mobile app can start their implementation asap we have decided to implement these APIs using dummy values before we integrate with the 3rd party cocktailResource and meal APIs.
 
 Other technical decisions that were taken during the design include:
 
@@ -13,12 +13,12 @@ Other technical decisions that were taken during the design include:
 
 # Cocktail API
 These are the requirements for the endpoint:
-* HTTP GET ``/cocktails``
+* HTTP GET ``/cocktailResources``
 * it must support a request parameter named ``search`` which accepts a ``String`` value. This parameter acts as a filter
-  to limit the number of returned cocktails
-* it must return the cocktail resource(s) in ``json`` format
+  to limit the number of returned cocktailResources
+* it must return the cocktailResource resource(s) in ``json`` format
 
-Sample request: ``GET http://localhost:8080/cocktails?search=Russian``
+Sample request: ``GET http://localhost:8080/cocktailResources?search=Russian``
 
 Return code: ``200 OK``
 
@@ -42,7 +42,7 @@ Sample response:
         "cocktailId": "d615ec78-fe93-467b-8d26-5d26d8eab073",
         "name": "Blue Margerita",
         "glass": "Cocktail glass",
-        "instructions": "Rub rim of cocktail glass with lime juice. Dip rim in coarse salt..",
+        "instructions": "Rub rim of cocktailResource glass with lime juice. Dip rim in coarse salt..",
         "image": "https://www.thecocktaildb.com/images/media/drink/qtvvyq1439905913.jpg",
         "ingredients": [
             "Tequila",
@@ -56,15 +56,15 @@ Sample response:
 
 Guidelines for getting started:
 * create a Spring REST controller and map it to the correct endpoint
-* create a method to return the list of cocktails, map it to the ``GET`` HTTP method. Don't forget to declare the ``search`` request parameter.
-* hard-code the 2 cocktail resources from the above sample and return them from the method you just declared
+* create a method to return the list of cocktailResources, map it to the ``GET`` HTTP method. Don't forget to declare the ``search`` request parameter.
+* hard-code the 2 cocktailResource resources from the above sample and return them from the method you just declared
 * add logging to your method by declaring an ``org.slf4j.Logger`` in your controller:
 ```java
 private static final Logger log = LoggerFactory.getLogger(MyController.class);
 ```
 or use [Project Lombok](https://projectlombok.org/) if you prefer.
 
-Verification: navigate to http://localhost:8080/cocktails?search=Russian and compare the response to the above sample. It must match exactly.
+Verification: navigate to http://localhost:8080/cocktailResources?search=Russian and compare the response to the above sample. It must match exactly.
 
 # Shopping List API
 ## Create a new Shopping List
@@ -88,7 +88,7 @@ Verification: use ``Postman`` to create a new shopping list.
 ## Add Cocktail to Shopping List
 This API call links a previously created ``Cocktail`` resource to the ``ShoppingList`` resource.
 
-Request: ``POST http://localhost:8080/shopping-lists/{shoppingListId}/cocktails``
+Request: ``POST http://localhost:8080/shopping-lists/{shoppingListId}/cocktailResources``
 
 Request body (json):
 
@@ -106,7 +106,7 @@ Response body: empty
 
 ## Get Shopping List
 This method will provide the main (currently still very simple) functionality of our API, it will return a distinct set
-of ingredients derived from all the cocktails that have been added to this shopping list.
+of ingredients derived from all the cocktailResources that have been added to this shopping list.
 
 **NOTE**: we currently only return some dummy generated data, just focus on getting the contract right.
 

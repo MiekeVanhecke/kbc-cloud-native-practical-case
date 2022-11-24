@@ -9,7 +9,7 @@ Basic requirements:
 
 * Use Spring Security (add appropriate dependency)
 * Only authenticated users are allowed to de shopping list API calls
-* Non-authenticated users are still allowed to search cocktails
+* Non-authenticated users are still allowed to search cocktailResources
 * Shopping lists need to contain a user identification attribute
 * The only shopping lists a user can see are the ones he created himself
 

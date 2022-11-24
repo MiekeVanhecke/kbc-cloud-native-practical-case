@@ -170,7 +170,7 @@ After successful start-up, use your SQL Client to have a look at the ``flyway_sc
 understand its role, have a look at the Flyway documentation if necessary.
 
 To implement our Shopping List functionality in the next lab, we first need the entire schema. This just involves a
-many-to-many relationship between cocktails and shopping lists.
+many-to-many relationship between cocktailResources and shopping lists.
 
 Add appropriate Flyway migration scripts to end up with this schema, find out how to best define the foreign key
 relationships in postgres:

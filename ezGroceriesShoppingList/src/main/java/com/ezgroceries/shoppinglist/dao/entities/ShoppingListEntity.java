@@ -2,7 +2,9 @@ package com.ezgroceries.shoppinglist.dao.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import java.util.Set;
 import java.util.UUID;
 
 @Entity
@@ -11,6 +13,9 @@ public class ShoppingListEntity {
     @Id
     private UUID id;
     private String name;
+
+    @OneToMany(mappedBy = "shoppingList")
+    private Set<CocktailShoppingListEntity> cocktailShoppingListEntities;
 
     public ShoppingListEntity() {
     }
@@ -34,5 +39,13 @@ public class ShoppingListEntity {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Set<CocktailShoppingListEntity> getCocktailShoppingListEntities() {
+        return cocktailShoppingListEntities;
+    }
+
+    public void setCocktailShoppingListEntities(Set<CocktailShoppingListEntity> cocktailShoppingListEntities) {
+        this.cocktailShoppingListEntities = cocktailShoppingListEntities;
     }
 }

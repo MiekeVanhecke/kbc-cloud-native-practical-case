@@ -46,9 +46,9 @@ public class ShoppingController {
         return cocktailService.mergeCocktails(cocktailDBResponse.getDrinks());
     }
 
-/*    @PostMapping(path="/shopping-lists")
+    @PostMapping(path="/shopping-lists")
     public ResponseEntity<Void> addShoppingList(@RequestBody ShoppingRequest shoppingList) {
-        String shoppingListId = shoppingListManager.createShoppingList(shoppingList.getName());
+        String shoppingListId = shoppingListService.create(shoppingList.getName());
         URI location = ServletUriComponentsBuilder
                 .fromCurrentRequestUri()
                 .path("/{shoppingListId}")
@@ -58,34 +58,34 @@ public class ShoppingController {
     }
     @PostMapping(path="/shopping-lists/{shoppingListId}/cocktails")
     public ResponseEntity<Void> addCocktailToShoppingList(@PathVariable("shoppingListId") String shoppingListId, HttpServletRequest request, @RequestBody CocktailRequest cocktailId) {
-        ShoppingListResource aShoppingListResource = shoppingListManager.getShoppingList(shoppingListId);
-        CocktailResource aCocktailResource = cocktailManager.getCocktail(cocktailId.getCocktailId());
-        if (aShoppingListResource != null && aCocktailResource != null) {
-            aShoppingListResource.addIngredients(aCocktailResource.getIngredients());
+        boolean success = shoppingListService.addCocktailsToShoppingList(shoppingListId, cocktailId.getCocktailId());
+
+        if (success) {
+            String baseUrl = ServletUriComponentsBuilder.fromRequestUri(request)
+                    .replacePath(null)
+                    .build()
+                    .toUriString();
+
+            URI location = ServletUriComponentsBuilder
+                    .fromUriString(baseUrl)
+                    .path("/shopping-lists")
+                    .path("/{shoppingListId}")
+                    .buildAndExpand(shoppingListId)
+                    .toUri();
+            return ResponseEntity.created(location).build();
+        } else {
+            return ResponseEntity.notFound().build();
         }
-
-        String baseUrl = ServletUriComponentsBuilder.fromRequestUri(request)
-                .replacePath(null)
-                .build()
-                .toUriString();
-
-        URI location = ServletUriComponentsBuilder
-                .fromUriString(baseUrl)
-                .path("/shopping-lists")
-                .path("/{shoppingListId}")
-                .buildAndExpand(shoppingListId)
-                .toUri();
-        return ResponseEntity.created(location).build();
     }
 
     @GetMapping(path="/shopping-lists/{shoppingListId}", produces = "application/json")
     public ShoppingListResource getShoppingList(@PathVariable("shoppingListId") String shoppingListId) {
-        return shoppingListManager.getShoppingList(shoppingListId);
+        return shoppingListService.getShoppingList(shoppingListId);
     }
 
     @GetMapping(path="/shopping-lists", produces = "application/json")
     public List<ShoppingListResource> getAllShoppingLists() {
-        return shoppingListManager.getAllShoppingLists();
-    }*/
+        return shoppingListService.getAllShoppingLists();
+    }
 
 }

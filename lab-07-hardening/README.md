@@ -41,7 +41,7 @@ logging.level.com.ezgroceries.shoppinglist=DEBUG
 ```
 
 These properties also enable some basic logging for all our external calls. Restart your application and do a
-search: http://localhost:8080/cocktails?search=beach
+search: http://localhost:8080/cocktailResources?search=beach
 
 You should see some ``feign`` logging, for example:
 

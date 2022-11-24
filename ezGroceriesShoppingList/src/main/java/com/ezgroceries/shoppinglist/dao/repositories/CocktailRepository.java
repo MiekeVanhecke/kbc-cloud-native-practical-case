@@ -11,4 +11,6 @@ public interface CocktailRepository extends Repository<CocktailEntity, UUID> {
     public List<CocktailEntity> findByIdDrinkIn(List<String> ids);
 
     public CocktailEntity save(CocktailEntity newCocktailEntity);
+
+    public CocktailEntity findById(UUID cocktailId);
 }

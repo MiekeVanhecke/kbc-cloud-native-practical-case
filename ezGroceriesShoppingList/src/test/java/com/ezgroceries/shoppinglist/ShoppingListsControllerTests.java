@@ -1,8 +1,7 @@
 package com.ezgroceries.shoppinglist;
 
 import com.ezgroceries.shoppinglist.dao.ShoppingListResource;
-import com.ezgroceries.shoppinglist.manager.CocktailManager;
-import com.ezgroceries.shoppinglist.manager.ShoppingListManager;
+import com.ezgroceries.shoppinglist.services.ShoppingListService;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,7 +21,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK)
 @AutoConfigureMockMvc
-public class ShoppingListsTestResource {
+public class ShoppingListsControllerTests {
     private final Logger logger = LoggerFactory.getLogger(getClass());
     private static final String BASE_URL = "http://localhost:8080";
 
@@ -30,17 +29,14 @@ public class ShoppingListsTestResource {
     private MockMvc mockMvc;
 
     @MockBean
-    private ShoppingListManager shoppingListManager;
-
-    @MockBean
-    private CocktailManager cocktailManager;
+    private ShoppingListService shoppingListService;
 
     @Test
     public void listCocktails() throws Exception {
-        int expectedNumberOfCocktails = 0;
+        int expectedNumberOfCocktails = 7;
 
         this.mockMvc //
-                .perform(get( "/cocktails??search=russian")
+                .perform(get( "/cocktails?search=russian")
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk()) //
                 .andExpect(content().contentType("application/json"))
@@ -65,7 +61,7 @@ public class ShoppingListsTestResource {
         aTestShopping.addIngredients(Arrays.asList("cava","kirr"));
         aTestShopping.setShoppingListId("shoppinglistID");
 
-        given(shoppingListManager.getShoppingList("shoppinglistID"))
+        given(shoppingListService.getShoppingList("shoppinglistID"))
                 .willReturn(aTestShopping);
 
         // act and assert

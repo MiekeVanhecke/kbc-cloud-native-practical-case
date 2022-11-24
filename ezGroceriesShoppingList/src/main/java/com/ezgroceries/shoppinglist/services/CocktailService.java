@@ -46,4 +46,5 @@ public class CocktailService {
         return drinks.stream().map(drinkResource->new CocktailResource(allEntityMap.get(drinkResource.getIdDrink()).getId().toString(),drinkResource.getStrDrink(),drinkResource.getStrGlass(),
                 drinkResource.getStrInstructions(),drinkResource.getStrDrinkThumb(),drinkResource.getAllIngredients())).collect(Collectors.toList());
     }
+
 }

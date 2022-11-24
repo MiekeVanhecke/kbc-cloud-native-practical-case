@@ -68,8 +68,8 @@ public class EzGroceriesShoppingListApplication {
 }
 ```
 
-### Search cocktails
-Study the response of the search cocktail API:
+### Search cocktailResources
+Study the response of the search cocktailResource API:
 
 Request: ``GET https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita``
 
@@ -82,7 +82,7 @@ Response (excerpt)
       "idDrink": "13060",
       "strDrink": "Margarita",
       "strGlass": "Cocktail glass",
-      "strInstructions": "Rub the rim of the glass with the lime slice to make the salt stick to it. Take care to moisten only the outer rim and sprinkle the salt on it. The salt should present to the lips of the imbiber and never mix into the cocktail. Shake the other ingredients with ice, then carefully pour into the glass.",
+      "strInstructions": "Rub the rim of the glass with the lime slice to make the salt stick to it. Take care to moisten only the outer rim and sprinkle the salt on it. The salt should present to the lips of the imbiber and never mix into the cocktailResource. Shake the other ingredients with ice, then carefully pour into the glass.",
       "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/wpxpvu1439905379.jpg",
       "strIngredient1": "Tequila",
       "strIngredient2": "Triple sec",
@@ -145,7 +145,7 @@ transforming their responses into our responses.
 
 After this implementation, the below example request to our API should be up and running:
 
-Request: ``GET localhost:8080/cocktails?search=russian``
+Request: ``GET localhost:8080/cocktailResources?search=russian``
 
 Response:
 

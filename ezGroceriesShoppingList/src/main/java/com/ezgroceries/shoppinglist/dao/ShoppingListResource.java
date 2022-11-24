@@ -12,6 +12,12 @@ public class ShoppingListResource {
     private List<String> ingredients;
 
 
+    public ShoppingListResource(String shoppingListId, String name) {
+        this.shoppingListId = shoppingListId;
+        this.name = name;
+        this.ingredients = new ArrayList<>();
+    }
+
     public ShoppingListResource(String name) {
         this.shoppingListId = String.valueOf(UUID.randomUUID());
         this.name = name;
