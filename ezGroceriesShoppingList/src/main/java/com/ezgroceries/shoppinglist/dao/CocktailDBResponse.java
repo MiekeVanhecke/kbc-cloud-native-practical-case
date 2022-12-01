@@ -216,6 +216,22 @@ public class CocktailDBResponse {
                 throw new RuntimeException(e);
             }
         }
+        public void setAllIngredients(List<String> ingredients) {
+            try {
+                int i = 1;
+                for (String ingredient : ingredients) {
+                    Method method = this.getClass().getDeclaredMethod("setStrIngredient" + i, String.class);
+                    method.invoke(this, ingredient);
+                    i++;
+                }
+            } catch (IllegalAccessException e) {
+                throw new RuntimeException(e);
+            } catch (InvocationTargetException e) {
+                throw new RuntimeException(e);
+            } catch (NoSuchMethodException e) {
+                throw new RuntimeException(e);
+            }
+        }
     }
 
 }

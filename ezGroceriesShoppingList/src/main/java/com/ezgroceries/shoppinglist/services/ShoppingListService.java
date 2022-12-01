@@ -10,10 +10,7 @@ import com.ezgroceries.shoppinglist.dao.repositories.CocktailShoppingListReposit
 import com.ezgroceries.shoppinglist.dao.repositories.ShoppingListRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
 
 @Service
 public class ShoppingListService {
@@ -63,8 +60,12 @@ public class ShoppingListService {
     private ShoppingListResource getShoppingResource(ShoppingListEntity shoppingListEntity){
         ShoppingListResource shoppingListResource = new ShoppingListResource(String.valueOf(shoppingListEntity.getId()), shoppingListEntity.getName());
         Set<CocktailShoppingListEntity> cocktailShoppingListEntityList = shoppingListEntity.getCocktailShoppingListEntities();
-        for (CocktailShoppingListEntity cocktailShoppingListEntity : cocktailShoppingListEntityList) {
-            shoppingListResource.addIngredients(cocktailShoppingListEntity.getCocktail().getIngredients());
+        if (cocktailShoppingListEntityList != null) {
+            for (CocktailShoppingListEntity cocktailShoppingListEntity : cocktailShoppingListEntityList) {
+                shoppingListResource.addIngredients(cocktailShoppingListEntity.getCocktail().getIngredients());
+            }
+        } else {
+            shoppingListResource.setIngredients(Arrays.asList(""));
         }
         return shoppingListResource;
     }

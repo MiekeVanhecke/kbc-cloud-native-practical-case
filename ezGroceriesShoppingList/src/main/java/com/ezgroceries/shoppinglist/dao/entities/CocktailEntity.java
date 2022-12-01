@@ -13,20 +13,24 @@ public class CocktailEntity {
     @Column(name = "ID_DRINK")
     private String idDrink;
     private String name;
-
     @Convert(converter = StringListConverter.class)
     private List<String> ingredients= new ArrayList<>();
-
+    private String glass;
+    private String instructions;
+    private String image;
     @OneToMany(mappedBy = "cocktail")
     Set<CocktailShoppingListEntity> cocktailShoppingListEntities;
 
     public CocktailEntity() {
     }
 
-    public CocktailEntity(String idDrink, String name) {
+    public CocktailEntity(String idDrink, String name, String glass, String instructions, String image) {
         this.id = UUID.randomUUID();
         this.idDrink = idDrink;
         this.name = name;
+        this.glass = glass;
+        this.instructions = instructions;
+        this.image = image;
     }
 
     public UUID getId() {
@@ -67,5 +71,29 @@ public class CocktailEntity {
 
     public void setCocktailShoppingListEntities(Set<CocktailShoppingListEntity> cocktailShoppingListEntities) {
         this.cocktailShoppingListEntities = cocktailShoppingListEntities;
+    }
+
+    public String getGlass() {
+        return glass;
+    }
+
+    public void setGlass(String glass) {
+        this.glass = glass;
+    }
+
+    public String getInstructions() {
+        return instructions;
+    }
+
+    public void setInstructions(String instructions) {
+        this.instructions = instructions;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }

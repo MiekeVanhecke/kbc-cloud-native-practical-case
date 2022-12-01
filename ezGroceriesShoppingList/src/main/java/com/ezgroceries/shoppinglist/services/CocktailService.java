@@ -31,7 +31,7 @@ public class CocktailService {
         Map<String, CocktailEntity> allEntityMap=drinks.stream().map(drinkResource->{
             CocktailEntity cocktailEntity=existingEntityMap.get(drinkResource.getIdDrink());
             if(cocktailEntity==null){
-                CocktailEntity newCocktailEntity=new CocktailEntity(drinkResource.getIdDrink(), drinkResource.getStrDrink());
+                CocktailEntity newCocktailEntity=new CocktailEntity(drinkResource.getIdDrink(), drinkResource.getStrDrink(), drinkResource.getStrGlass(), drinkResource.getStrInstructions(), drinkResource.getStrDrinkThumb());
                 newCocktailEntity.setIngredients(drinkResource.getAllIngredients());
                 cocktailEntity=cocktailRepository.save(newCocktailEntity);
             }
