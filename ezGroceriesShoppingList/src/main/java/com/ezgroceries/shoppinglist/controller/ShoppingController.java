@@ -87,6 +87,7 @@ public class ShoppingController {
                     .toUri();
             return ResponseEntity.created(location).build();
         } else {
+            log.info("shoppingListId or CocktailId not found");
             return ResponseEntity.notFound().build();
         }
     }
