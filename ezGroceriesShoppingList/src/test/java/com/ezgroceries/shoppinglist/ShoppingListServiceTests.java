@@ -1,6 +1,5 @@
 package com.ezgroceries.shoppinglist;
 
-import com.ezgroceries.shoppinglist.dao.CocktailResource;
 import com.ezgroceries.shoppinglist.dao.ShoppingListResource;
 import com.ezgroceries.shoppinglist.dao.entities.CocktailEntity;
 import com.ezgroceries.shoppinglist.dao.entities.CocktailShoppingListEntity;
@@ -18,8 +17,7 @@ import org.springframework.util.Assert;
 
 import java.util.*;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.ArgumentMatchers.any;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 @SpringBootTest
@@ -44,13 +42,13 @@ public class ShoppingListServiceTests {
         doReturn(cocktailShoppingListEntity).when(cocktailShoppingListRepository).findById(cocktailShoppingListKey);
 
         boolean success = shoppingListService.addCocktailsToShoppingList(String.valueOf(shoppingListEntity.getId()), String.valueOf(cocktailEntity.getId()) );
-        assertEquals(true,success);
+        assertTrue(success);
 
     }
     @Test
     public void testUnHappyFlow_AddCocktailsToShoppingList() {
         boolean success = shoppingListService.addCocktailsToShoppingList(String.valueOf(UUID.randomUUID()), String.valueOf(UUID.randomUUID()));
-        assertEquals(false,success);
+        assertFalse(success);
     }
     @Test
     public void createShoppingList(){
